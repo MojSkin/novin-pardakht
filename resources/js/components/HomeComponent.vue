@@ -349,9 +349,8 @@ export default {
                     cancelButtonText: "No",
                     showCloseButton: true,
                 }).then(result => {
-                    let token = this.$helpers.getToken()
-                    this.loading = true
                     if (result.value) {
+                        let token = this.$helpers.getToken()
                         this.loading = true
                         axios.post(this.routes[tableName].destroy, {id: item.id}, { headers: {"Authorization" : `Bearer ${token}`} }).then(res => {
                             if (res && res.data) {

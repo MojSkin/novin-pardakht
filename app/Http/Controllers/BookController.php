@@ -28,7 +28,12 @@ class BookController extends Controller {
                 'isbn' => 'required|string|max:11',
                 'author_id' => 'required|exists:authors,id'
             ]);
-
+            $book = Book::whereId($request->id)->get();
+            if ($book->isbn != $request->isbn) {
+                $request->validate([
+                    'isbn' => 'required|string|max:11|unique:books,isbn',
+                ]);
+            }
             if (Book::whereId($request->id)->update($request->all())) {
                 $book = Book::whereId($request->id)->with('author')->first();
             }

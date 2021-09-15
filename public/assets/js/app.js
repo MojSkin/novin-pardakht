@@ -2809,11 +2809,9 @@ __webpack_require__.r(__webpack_exports__);
           cancelButtonText: "No",
           showCloseButton: true
         }).then(function (result) {
-          var token = _this3.$helpers.getToken();
-
-          _this3.loading = true;
-
           if (result.value) {
+            var token = _this3.$helpers.getToken();
+
             _this3.loading = true;
             axios.post(_this3.routes[tableName].destroy, {
               id: item.id
