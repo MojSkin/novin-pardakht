@@ -368,6 +368,8 @@ export default {
                                                 this.booksList.splice(i, 1)
                                             }
                                         }
+                                    } else {
+                                        this.authorsList = res.data.authors
                                     }
                                 } else {
                                     this.$helpers.notify(res.data.message?res.data.message:'Error while deleting '+tableName.toUpperCase()+'`s data', {type: 'error', icon: 'fa fa-exclamation-triangle'});

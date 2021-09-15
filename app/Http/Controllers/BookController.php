@@ -28,7 +28,7 @@ class BookController extends Controller {
                 'isbn' => 'required|string|max:11',
                 'author_id' => 'required|exists:authors,id'
             ]);
-            $book = Book::whereId($request->id)->get();
+            $book = Book::whereId($request->id)->first();
             if ($book->isbn != $request->isbn) {
                 $request->validate([
                     'isbn' => 'required|string|max:11|unique:books,isbn',
@@ -71,6 +71,7 @@ class BookController extends Controller {
         if ($book) {
             if (Book::whereId($request->id)->delete()) {
                 $response['message'] = 'Book has been deleted successfully.';
+                $response['authors'] = Author::orderBy('l_name')->orderBy('f_Name')->with('books')->get();
                 $response['status'] = true;
             } else {
                 $response['message'] = 'Error while deleting book`s data.';

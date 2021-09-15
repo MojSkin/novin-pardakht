@@ -2838,6 +2838,8 @@ __webpack_require__.r(__webpack_exports__);
                         _this3.booksList.splice(_i, 1);
                       }
                     }
+                  } else {
+                    _this3.authorsList = res.data.authors;
                   }
                 } else {
                   _this3.$helpers.notify(res.data.message ? res.data.message : 'Error while deleting ' + tableName.toUpperCase() + '`s data', {
