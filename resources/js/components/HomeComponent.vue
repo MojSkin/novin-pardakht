@@ -66,10 +66,10 @@
                                     <tbody>
                                     <tr v-for="data in authorsList">
                                         <td>{{ data.f_name }}</td>
-                                        <td>{{ data.l_name }}</td>
+                                        <td><span class="badge badge-dark cursor-pointer"</span></td>
                                         <td>
                                             <div class="btn-group btn-group-sm font-size-10">
-                                                <button @click="editRecord('author', data)" class="btn btn-primary py-1 px-2">
+                                                <button @click="editRecord('author', data)" class="btn btn-primary py-1 px-2" :ref="'edit-'+data.id">
                                                     <i class="fa fa-pencil"></i>
                                                 </button>
                                                 <button @click="deleteRecord('author', data)" class="btn btn-danger py-1 px-2">
@@ -435,7 +435,7 @@ export default {
             }
             this.action = -1
             this.editingRecord = null
-        }
+        },
     }
 }
 </script>

@@ -2928,6 +2928,10 @@ __webpack_require__.r(__webpack_exports__);
       };
       this.action = -1;
       this.editingRecord = null;
+    },
+    clickme: function clickme(id) {
+      // console.log(this.$refs['edit-'+id])
+      this.$refs['edit-' + id][0].click();
     }
   }
 });
@@ -42505,7 +42509,21 @@ var render = function() {
                                 return _c("tr", [
                                   _c("td", [_vm._v(_vm._s(data.f_name))]),
                                   _vm._v(" "),
-                                  _c("td", [_vm._v(_vm._s(data.l_name))]),
+                                  _c("td", [
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass:
+                                          "badge badge-dark cursor-pointer",
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.clickme(data.id)
+                                          }
+                                        }
+                                      },
+                                      [_vm._v(_vm._s(data.l_name))]
+                                    )
+                                  ]),
                                   _vm._v(" "),
                                   _c("td", [
                                     _c(
@@ -42518,6 +42536,8 @@ var render = function() {
                                         _c(
                                           "button",
                                           {
+                                            ref: "edit-" + data.id,
+                                            refInFor: true,
                                             staticClass:
                                               "btn btn-primary py-1 px-2",
                                             on: {
